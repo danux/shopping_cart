@@ -8,10 +8,9 @@ install:
   - "pip install -r requirements.txt"
   - "pip install coveralls"
   - "pip install coverage"
-  - "pip install nose"
 before_script:
   - "flake8 . --config=flake8"
 script:
-  - "nosetests --with-coverage tests.py"
+  - "coverage run tests.py"
 after_success: coveralls
 sudo: false
