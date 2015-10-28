@@ -4,7 +4,7 @@ python:
   - "3.3"
   - "3.4"
   - "3.5"
-install: "pip install --user -r requirements.txt"
+install: "pip install -r requirements.txt"
 before_script:
   - "flake8 . --config=flake8"
 script: "python test.py"
