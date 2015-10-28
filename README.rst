@@ -12,9 +12,6 @@ The most recent updates were about handling Python 3.
 Tested versions
 ---------------
 
-Python
-~~~~~~
-
 - Python 2.7.9
 - Python 3.3.5
 - Python 3.4.2
