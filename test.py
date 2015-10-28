@@ -1,9 +1,14 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 from cart import Cart, CartError
-from mock import NonCallableMock
+try:
+    from unittest.mock import NonCallableMock
+except ImportError:
+    from mock import NonCallableMock
 import unittest
 
 
-class TestCart(unittest.TestCase):
+class CartTestCase(unittest.TestCase):
 
     def setUp(self):
         self.session = {}
@@ -13,24 +18,20 @@ class TestCart(unittest.TestCase):
 
     def test_can_add_product(self):
         self.cart.add_product(self.product_one, 10)
-        self.assertEqual(
-            self.cart.get_cart_item(self.product_one).quantity, 10)
+        self.assertEqual(self.cart.get_cart_item(self.product_one).quantity, 10)
 
     def test_cannot_add_product_twice(self):
         self.cart.add_product(self.product_one, 13)
-        self.assertRaises(
-            CartError, lambda: self.cart.add_product(self.product_one, 10))
+        self.assertRaises(CartError, lambda: self.cart.add_product(self.product_one, 10))
 
     def test_remove_product(self):
         self.cart.add_product(self.product_one, 10)
         self.cart.remove_product(self.product_one)
         self.assertEqual(self.cart.num_items, 0)
-        self.assertRaises(
-            CartError, lambda: self.cart.get_cart_item(self.product_one))
+        self.assertRaises(CartError, lambda: self.cart.get_cart_item(self.product_one))
 
     def test_cannot_remove_product_not_in_cart(self):
-        self.assertRaises(
-            CartError, lambda: self.cart.remove_product(self.product_one))
+        self.assertRaises(CartError, lambda: self.cart.remove_product(self.product_one))
 
     def test_can_calculate_quantity_of_cart(self):
         self.cart.add_product(self.product_one, 10)
@@ -53,12 +54,10 @@ class TestCart(unittest.TestCase):
     def test_can_update_quanity(self):
         self.cart.add_product(self.product_one, 10)
         self.cart.update_quantity(self.product_one, 15)
-        self.assertEqual(
-            self.cart.get_cart_item(self.product_one).quantity, 15)
+        self.assertEqual(self.cart.get_cart_item(self.product_one).quantity, 15)
 
     def test_cannot_update_quantity_if_not_in_cart(self):
-        self.assertRaises(CartError, lambda:
-                          self.cart.update_quantity(self.product_one, 10))
+        self.assertRaises(CartError, lambda: self.cart.update_quantity(self.product_one, 10))
 
     def test_can_save_cart(self):
         self.cart.add_product(self.product_one)
