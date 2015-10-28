@@ -12,14 +12,17 @@ The most recent updates were about handling Python 3.
 Tested versions
 ---------------
 
+.. image:: https://travis-ci.org/danux/shopping_cart.svg?branch=master
+    :target: https://travis-ci.org/danux/shopping_cart
+
+.. image:: https://coveralls.io/repos/danux/shopping_cart/badge.svg?branch=master&service=github
+  :target: https://coveralls.io/github/danux/shopping_cart?branch=master
+
+
 - Python 2.7.9
 - Python 3.3.5
 - Python 3.4.2
 - Python 3.5.0
-
-.. image:: https://travis-ci.org/danux/shopping_cart.svg?branch=master
-    :target: https://travis-ci.org/danux/shopping_cart
-
 
 How to use
 ----------
